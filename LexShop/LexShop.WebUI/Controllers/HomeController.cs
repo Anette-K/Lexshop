@@ -19,7 +19,7 @@ namespace LexShop.WebUI.Controllers
 
             return View();
         }
-
+        // comment!
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";
