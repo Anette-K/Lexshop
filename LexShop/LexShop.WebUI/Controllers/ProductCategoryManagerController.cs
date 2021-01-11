@@ -94,7 +94,7 @@ namespace LexShop.WebUI.Controllers
             else
             {
                 context.Delete(Id);
-                return View("Index");
+                return RedirectToAction("Index");
             }
         }
     }
