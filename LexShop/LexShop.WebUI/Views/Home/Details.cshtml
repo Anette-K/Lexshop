@@ -1,14 +1,14 @@
 ﻿@model LexShop.Core.Models.Product
 
 @{
-    ViewBag.Title = Model.Name + "Details";
+    ViewBag.Title = Model.Name + " Details";
 }
 
 <h2>@Html.DisplayFor(model => model.Name)</h2>
 
 <div>
     <div class="col-md-2">
-        <img class="img-responsive" src="~/Content/ProductImages/@Model.Image" />
+        <img class="img-responsive" src="~/Content/ProductImages/@Model.Image"/>
     </div>
     <div class="col-md-10">
         <dl class="dl-horizontal">
@@ -30,8 +30,15 @@
             </dd>
 
             <dt></dt>
-            <dd><a href="#" class="btn btn-default">Add to Basket</a></dd>
-            @Html.ActionLink("Back to List", "Index")
+            <dd>
+                <a href="#" class="btn btn-default">Add to Basket</a>
+            </dd>
+
+            <dt></dt>
+            <dd>
+                @Html.ActionLink("Back to List", "Index")
+            </dd>
         </dl>
     </div>
 </div>
+<div class="col-md-12 clearfix"></div>
