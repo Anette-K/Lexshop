@@ -59,6 +59,7 @@ namespace LexShop.Services
             cookie.Value = basket.Id;
             cookie.Expires = DateTime.Now.AddDays(1);
             httpContext.Response.Cookies.Add(cookie);
+
             return basket;
         }
 
@@ -66,6 +67,7 @@ namespace LexShop.Services
         {
             Basket basket = GetBasket(httpContext, true);
             BasketItem item = basket.BasketItems.FirstOrDefault(i => i.ProductId == productId);
+
             if (item == null)
             {
                 item = new BasketItem()
@@ -86,6 +88,7 @@ namespace LexShop.Services
         {
             Basket basket = GetBasket(httpContext, true);
             BasketItem item = basket.BasketItems.FirstOrDefault(i => i.Id == itemId);
+
             if (item != null)
             {
                 basket.BasketItems.Remove(item);
@@ -106,7 +109,8 @@ namespace LexShop.Services
                                    ProductName = p.Name,
                                    Image = p.Image,
                                    Price = p.Price
-                               }).ToList();
+                               }
+                               ).ToList();
                 return results;
             }
             else
@@ -122,9 +126,11 @@ namespace LexShop.Services
             {
                 int? basketCount = (from item in basket.BasketItems
                                     select item.Quantity).Sum();
+
                 decimal? basketTotal = (from item in basket.BasketItems
                                         join p in productContext.Collection() on item.ProductId equals p.Id
                                         select item.Quantity * p.Price).Sum();
+
                 model.BasketCount = basketCount ?? 0;
                 model.BasketTotal = basketTotal ?? decimal.Zero;
 
@@ -135,6 +141,5 @@ namespace LexShop.Services
                 return model;
             }
         }
-
     }
 }
