@@ -27,8 +27,8 @@ namespace LexShop.Services
             Basket basket = new Basket();
             if (cookie != null)
             {
-                String basketId = cookie.Value;
-                if (string.IsNullOrEmpty(basketId))
+                string basketId = cookie.Value;
+                if (!string.IsNullOrEmpty(basketId))
                 {
                     basket = basketContext.Find(basketId);
                 }
